@@ -20,7 +20,7 @@ public class UsersController {
 
     //   -----------------    список Users    -----------------
     @GetMapping()
-    public String index(Model model) {
+    public String showAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "users/index";
     }
@@ -34,7 +34,7 @@ public class UsersController {
 
     //   -----------------    добавить User    -----------------
     @GetMapping("/new")
-    public String newUser(@ModelAttribute("user") User user) {  // вызываем форму для добавления нового User
+    public String addNewUser(@ModelAttribute("user") User user) {  // вызываем форму для добавления нового User
         return "users/new";
     }
 

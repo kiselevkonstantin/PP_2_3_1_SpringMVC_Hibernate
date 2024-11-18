@@ -6,7 +6,6 @@ import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -17,19 +16,16 @@ public class UserDAOImpl implements UserDAO {
 
 
     @Override
-    @Transactional
     public List<User> getAllUsers() {
         return entityManager.createQuery("from User", User.class).getResultList();
     }
 
     @Override
-    @Transactional
     public void addUser(User user) {
         entityManager.persist(user);
     }
 
     @Override
-    @Transactional
     public void deleteUser(int id) throws NullPointerException {
         User user = entityManager.find(User.class, id);
         if (user != null) {
@@ -40,7 +36,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    @Transactional
     public void updateUser(int id, User user) throws NullPointerException {
         User localUser = entityManager.find(User.class, id);
         if (localUser != null) {
@@ -54,7 +49,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    @Transactional
     public User getUserByID(int id) {
         return entityManager.find(User.class, id);
     }
