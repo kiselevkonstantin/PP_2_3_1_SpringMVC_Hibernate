@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All users</title>
+</head>
+<body> <!-- Основное содержимое страницы -->
+
+<h1>All users</h1> <!-- Заголовок страницы -->
+<table border="1"> <!-- Таблица для отображения списка пользователей, с рамкой толщиной 1 -->
+    <thead> <!-- Заголовок таблицы -->
+    <tr> <!-- Строка таблицы для заголовков -->
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>e-mail</th>
+    </tr>
+    </thead>
+    <tbody> <!-- Основное содержимое таблицы -->
+    <!-- Перебор списка пользователей -->
+    <tr th:each="user : ${users}">
+        <td th:text="${user.getId()}">ID</td>
+        <td th:text="${user.getName()}">Name</td>
+        <td th:text="${user.getAge()}">Age</td>
+        <td th:text="${user.getEmail()}">e-mail</td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<hr/>
+<a href="/users/new">Create new user</a>
+
+
+</body>
+</html>
